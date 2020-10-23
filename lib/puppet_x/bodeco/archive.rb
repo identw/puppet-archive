@@ -16,6 +16,7 @@ module PuppetX
 
       def checksum(type)
         return nil if type == :none
+        return File.size(@file).to_s if type == :size
 
         digest = Digest.const_get(type.to_s.upcase)
         digest.file(@file).hexdigest
